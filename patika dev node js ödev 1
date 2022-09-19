@@ -1,0 +1,9 @@
+const yaricap = process.argv.slice(2)*1      //array şeklinde geleceği için paramlar node sürümü ve js dosya isminden slice methodu ile kurtuldum
+
+
+function Hesapla(yaricap) {
+    let alan = Math.PI*(yaricap*yaricap)
+    console.log(`Yarıçapı ${yaricap} olan dairenin alanı: ${alan}`)     //template literals ile de yarıçapı yazdırdım
+}
+
+Hesapla(yaricap)
