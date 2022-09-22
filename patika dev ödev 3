@@ -1,0 +1,27 @@
+const circle = require("./circle")
+
+circle.circleArea(5)
+circle.circlePerimeter(5)
+
+
+
+
+
+
+
+
+
+function circleArea(r){
+    let area = Math.PI*(r*r)
+    console.log(area)
+}
+
+function circlePerimeter(a){
+    let Perimeter = 2*(Math.PI*a)
+    console.log(Perimeter)
+}
+
+module.exports = {
+    circleArea,
+    circlePerimeter
+}
