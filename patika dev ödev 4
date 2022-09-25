@@ -1,0 +1,72 @@
+PACKAGE.JSON JSON DOSYASISNI TERMİNALDEN KURUDUK NASIL YAPILACAĞINI ÖNCEKİ VİDEOLARDAN ÇOK KEZ İZLEDİK
+{
+  "name": "fs-sample-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+EMPLOYESS.JSON I KURDUK
+[
+  { "name": "Employee 1 Name", "salary": 2000 },
+  { "name": "Employee 2 Name", "salary": 3000 }   BİZE ZATEN ÖDEV DOKÜMANINDA VERİLMİŞTİ ASLINDA
+]
+
+
+İNDEX.JS İMİZİ KURDUK GEREKLİ İMPORTLARI YAPTIKTAN SONRA NODE JS İN DOKÜMANTASYONUNU KULLANARAK GEREKLİ İŞLEMLERİ YAPTIK
+
+import * as fs from "fs";
+
+//CREATE
+const Create = () => {                                     //
+  fs.writeFile( 
+    "employees.json",
+    '[{"name": "Employee 1 Name", "salary": 2000}]',
+    (err) => {
+      if (err) throw err;
+      console.log("--Dosya başarıyla oluşturuldu--");
+    }
+  );
+};
+
+//READ
+const Read = () => {
+  fs.readFile("employees.json", "utf8", (err, data) => {
+    if (err) throw err;
+    console.log(JSON.parse(data));
+    console.log("--Dosya başarıyla okundu--");
+  });
+};
+
+//UPDATE
+const Update = () => {
+  fs.readFile("employees.json", "utf8", (err, data) => {
+    if (err) throw err;
+    let arr = JSON.parse(data);
+    arr.push({ name: "Employee3  Name", salary: 51000 });
+    fs.writeFile("employees.json", JSON.stringify(arr), "utf8", (error) => {
+      if (error) throw error;
+      console.log("--Dosya başarıyla güncellendi--");
+    });
+  });
+};
+
+//DELETE
+const Delete = () => {
+  fs.unlink("employees.json", (err) => {        //MANTIK BELLİ HATA VARSA İF THROW ETMELİSİN HATAYI
+    if (err) throw err;
+    console.log("--Dosya başarıyla silindi--");      BU DA ELSE DURUMU
+  });
+};
+
+// Create();
+// Read();
+// Update();
+// Delete();
